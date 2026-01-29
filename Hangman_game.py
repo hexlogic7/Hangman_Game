@@ -9,7 +9,7 @@ def get_random_word():
     ]
     return random.choice(words)
 
-stages = [r'''
+stages = ['''
   +---+
   |   |
   O   |
@@ -17,7 +17,7 @@ stages = [r'''
  / \  |
       |
 =========
-''', r'''
+''', '''
   +---+
   |   |
   O   |
@@ -25,7 +25,7 @@ stages = [r'''
  /    |
       |
 =========
-''', r'''
+''', '''
   +---+
   |   |
   O   |
@@ -33,7 +33,7 @@ stages = [r'''
       |
       |
 =========
-''', r'''
+''', '''
   +---+
   |   |
   O   |
@@ -41,7 +41,7 @@ stages = [r'''
       |
       |
 =========
-''', r'''
+''', '''
   +---+
   |   |
   O   |
@@ -49,7 +49,7 @@ stages = [r'''
       |
       |
 =========
-''', r'''
+''', '''
   +---+
   |   |
   O   |
@@ -57,7 +57,7 @@ stages = [r'''
       |
       |
 =========
-''', r'''
+''', '''
   +---+
   |   |
       |
@@ -66,6 +66,8 @@ stages = [r'''
       |
 =========
 ''']
+
+#============ Mode Selection ===================
 
 print("1. Single Player")
 print("2. Multiplayer (Same Wifi)")
@@ -80,7 +82,7 @@ def multiplayer_host(chosen_word):
 
     print("Waiting for player to join...")
     conn, addr = server.accept()
-    print("Player joined:", addr)
+    print("Player joined: ", addr)
 
     lives = 6
     correct_letters = []
@@ -168,7 +170,8 @@ if mode == "2":
 
     exit()
 
-# ================= SINGLE PLAYER =================
+# TODO-1: - Create a variable  called 'lives' to keep  track of the number of lives left.
+# Set 'lives' to equal 6.
 
 lives = 6
 chosen_word = get_random_word()
@@ -193,6 +196,10 @@ while True:
 
     display = "".join([c if c in correct_letters else "_" for c in chosen_word])
     print(display)
+
+    # TODO-2: - If guess is not a letter in the chosen_word, Then reduce 'lives' by 1.
+    # If lives goes down to 0 then the game should stop and it should print "You lose." 
+
     print(stages[lives])
 
     if "_" not in display:
